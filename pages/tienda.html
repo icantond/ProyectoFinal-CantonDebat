@@ -7,11 +7,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css">
     <link rel="stylesheet" href="../css/styles.css">
-    <title>Contacto | Lotus Espacio de Yoga - Santa Fe - Argentina</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+    <title>Tienda Holística - Lotus Yoga - Santa Fe - Argentina</title>
     <link rel="icon" type="image/x-icon" href="../img/favicon.png">
-    <meta name="description" content="Completa el formulario y te responderemos a la brevedad.">
-    
+    <meta name="description" content="Descubrí la clase de Yoga indicada para vos.">
 </head>
 
 <body>
@@ -55,59 +56,41 @@
 
     <main>
 
-        <div class="articles container col-12 col-md-6 p-3">
-            <div class="articles__article row">
-                <h2 class="articles__article__title">Contactate con nosotros</h2>
-                <p class="articles__article__text">Completá el siguiente formulario para dejarnos tus consultas, dudas y
-                    sugerencias. Prometemos responderte lo más pronto posible. Y no te olvides de suscribirte a nuestro
-                    newsletter para recibir en tu email todas las novedades.
-                </p>
+        <section class="articles container col-12 col-md-10 p-3 cards">
+            <article class="articles__article row" data-aos="zoom-in-up" data-aos-duration="1000">
+                <img src="../img/sagradamadre-logo.png" alt="Logo de Sagrada Madre"
+                    class="articles__article__img col-12 col-md-6">
+                <div class="articles__article__legend col-12 col-md-6 mt-3">
+                    <h2 class="articles__article__title">Descubrí nuestra línea de productos Sagrada Madre</h2>
+                    <p class="articles__article__text">Comprá online y recibí tu compra en cualquier lugar del país o
+                        elegí tus productos y retiralos por nuestro espacio.</p>
+                </div>
+            </article>
+        </section>
+
+        <!-- SECCION TARJETAS DE PRODUCTOS SEPARADAS EN CATEGORIAS -->
+        <section class="cards container-fluid" data-aos="zoom-in-up" data-aos-duration="1000">
+            <div class="tienda__bar d-flex justify-content-between align-items-center mb-5 mb-5 ">
+                <img src="../img/bag.svg" class="tienda__bar--img" id="imagen-carrito"alt="">
+                <h2 class="tienda__bar--titulo">Tienda Virtual</h2>
             </div>
+            <div class="row">
+                <div class="cards__container container-fluid gap-2" id="contenedor-productos">
+                    <!-- ACA SE Agregaran las tarjetas de productos desde JS -->
+                </div>
+            </div>
+        </section>
+<!-- 
+        <div id="carrito-vacio">
+            <img src="../img/cart2.svg">
+            <p>Carrito de compras vacío</p>
         </div>
 
-        <form name="lotus-contacto" class="form contact-form container col-10 col-md-8 col-xl-6 p-5">
-            <div class="mb-3">
-                <label for="nombre" class="form-label p-1">Nombre y Apellido:</label>
-                <input type="text" class="form-control"
-                    id="nombre" placeholder="Nombre y Apellido" required>
-                <label for="email" class="form-label">Email:</label>
-                <input type="email" class="form-control" id="email" placeholder="nombre@ejemplo.com" required>
-            </div>
-            <div class="mb-3">
-                <label for="modalidad" class="form-label p-1">Modalidad de clases:</label>
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="modalidad" id="online" value="presencial">
-                    <label class="form-check-label" for="modalidad">Presencial</label>
-                    
-                </div>
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="modalidad" id="online" value="online">
-                    <label class="form-check-label p-1" for="modalidad">Online</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="recibir-novedades" id="newsletter">
-                    <label class="form-check-label" for="newsletter"> Quiero recibir novedades en mi email</label>
-                </div>
-                <div class="mb-4">
-                    <label for="edad" class="form-label">Edad:</label>
-                    <input type="number" class="form-control" id="edad" required>
-                    <label for="localidad" class="form-label">¿Cómo nos conociste?:</label>
-                    <select class="form-select" aria-label="Default select referrer">
-                        <option selected>Seleccioná una opción:</option>
-                        <option value="redes-sociales">Redes sociales</option>
-                        <option value="tv-radio">Televisión-Radio</option>
-                        <option value="recomendacion">Recomendación de amig@s</option>
-                    </select>
-                </div>
-                <div class="mb-3">
-                    <label for="mensaje" class="form-label">Dejanos tu mensaje:</label>
-                    <textarea class="form-control" id="mensaje" rows="3" placeholder="Escribí tu mensaje o sugerencia..."></textarea>
-                </div>
-                <div class="send__button">
-                    <a href="" title="Enviar consulta">Enviar</a>
-                </div>
-            </div>
-        </form>
+        <div id="carrito-lleno" style="display:none">
+            <img src="../img/cart-fill.svg">
+            <p>Hay productos en el carrito</p>
+        </div> -->
+
     </main>
 
     <footer class="footer container-fluid justify-content-center">
@@ -125,7 +108,7 @@
                 <a href="https://www.facebook.com" target="_blank"><img src="../img/facebook-icon.svg"
                         alt="icono de Facebook" class="footer__social-media__icon"></a>
                 <a href="https://www.instagram.com" target="_blank"><img src="../img/instagram-icon.svg"
-                        alt="icono de Instagram" class="footer__social-media__icon" vvvvv></a>
+                        alt="icono de Instagram" class="footer__social-media__icon"></a>
                 <a href="https://www.twitter.com" target="_blank"><img src="../img/twitter-icon.svg"
                         alt="icono de Twitter" class="footer__social-media__icon"></a>
                 <a href="https://www.tiktok.com" target="_blank"><img src="../img/tiktok-icon.svg" alt="icono de Tiktok"
@@ -136,14 +119,14 @@
                         alt="icono de YouTube" class="footer__social-media__icon"></a>
             </div>
             <div class="footer__map col-12 col-md-3">
-                <h5 class="footer__map__title">Dónde estamos</h5>
+                <h4 class="footer__map__title">Dónde estamos</h4>
                 <iframe class="footer__map__iframe"
                     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3396.8429876284445!2d-60.71300745062396!3d-31.63814911408482!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95b5a9b791573657%3A0x262fe9abab51729c!2sUrquiza%203156%2C%20S3000FFW%20Santa%20Fe!5e0!3m2!1ses-419!2sar!4v1664635454639!5m2!1ses-419!2sar"
                     style="border:0;" allowfullscreen="" loading="lazy"
                     referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>
             <div class="footer__business-card col-12 col-md-2">
-                <h5 class="footer__business-card__title">LOTUS - Espacio de Yoga</h5>
+                <h4 class="footer__business-card__title">LOTUS - Espacio de Yoga</h4>
                 <p class="footer__business-card__text">Av Urquiza 3156</p>
                 <p class="footer__business-card__text">S300FFW - Santa Fe - Argentina</p>
                 <p class="footer__business-card__text"><a href="mailto:info@lotusyoga.com">info@lotusyoga.com</a>
@@ -151,8 +134,10 @@
                 <p class="footer__business-card__text">(0342) 444-5555</p>
             </div>
         </div>
-
     </footer>
+
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="../js/store.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
         crossorigin="anonymous"></script>

@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Alef:wght@400;700&family=Josefin+Sans:ital,wght@0,200;0,300;0,400;0,500;0,700;1,300&family=Work+Sans:ital,wght@0,400;0,700;1,400&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Alef:wght@400;700;800;900&family=Josefin+Sans:ital,wght@0,200;0,300;0,400;0,500;0,700;1,300&family=Work+Sans:ital,wght@0,400;0,700;1,400&display=swap");
 * {
   margin: 0;
   padding: 0;
@@ -165,7 +165,7 @@ section .cards {
   display: flex;
   flex-direction: row;
   justify-content: center;
-  align-items: center;
+  align-items: stretch;
   flex-wrap: wrap;
 }
 .cards__element {
@@ -185,7 +185,7 @@ section .cards {
   margin-bottom: 2.7rem;
 }
 .cards__element:hover {
-  transform: scale(1.15);
+  transform: scale(1.05);
   transition-duration: 700ms;
 }
 .cards__element__circle {
@@ -202,9 +202,22 @@ section .cards {
   align-self: flex-start;
   margin: auto;
 }
+.cards__element__price {
+  font-family: "Alef", sans-serif;
+  font-size: 1.4rem;
+  font-weight: 600;
+  align-self: flex-start;
+  margin: auto;
+}
 .cards__element__profession {
   font-family: "Alef", sans-serif;
   font-size: 1.2rem;
+  align-self: flex-start;
+  margin: 0.5rem auto;
+}
+.cards__element__cantidad {
+  font-family: "Alef", sans-serif;
+  font-size: 1rem;
   align-self: flex-start;
   margin: 0.5rem auto;
 }
@@ -246,6 +259,65 @@ section .cards {
 
 .articlesSection .cards__container {
   width: 90%;
+  justify-content: center;
+}
+
+.agregar-btn {
+  color: #ffffff;
+  font-weight: bold;
+}
+.agregar-btn:hover {
+  cursor: pointer;
+}
+
+.tienda__bar {
+  max-height: 100px;
+  position: sticky;
+  padding: 0.5rem;
+  top: 0rem;
+  display: flex;
+  background-color: #74C69D;
+  z-index: 1;
+}
+.tienda__bar--img {
+  height: 2rem;
+  justify-content: left;
+}
+.tienda__bar--text {
+  font-family: "Work Sans", sans-serif;
+  font-weight: 900;
+  justify-content: center;
+  outline: 0.05rem;
+}
+
+.close-modal:hover {
+  cursor: pointer;
+}
+
+.modal-content {
+  background-color: #74C69D;
+}
+
+.modal-body {
+  background-color: #fff;
+}
+
+#tabla-carrito {
+  margin: auto;
+}
+#tabla-carrito th {
+  padding: 0.5rem;
+}
+
+td {
+  text-align: center;
+}
+
+.modal-nombre {
+  text-align: left;
+}
+
+.modal-footer {
   justify-content: center;
 }
 
