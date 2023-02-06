@@ -63,8 +63,9 @@ let carrito = {
         } else {
             this.productos.push({ codigo, nombre, precio, cantidad });
         }
-        this.guardarLocalStorage();
         cambiarImagenCarrito();
+        this.guardarLocalStorage();
+        
     },
     // Funcion para guardar el carrito y la imagen en LocalStorage
     guardarLocalStorage: function () {
