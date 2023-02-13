@@ -38,7 +38,7 @@ async function cargarProductos() {
 
     let productos;
     try {
-        const response = await fetch("/productos.json");
+        const response = await fetch("./productos.json");
         const data = await response.json();
         productos = data;
     } catch (error) {
