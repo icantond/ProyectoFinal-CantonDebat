@@ -151,53 +151,15 @@ section .cards {
     justify-content: center;
 }
 
-// .popup {
-//     position: fixed;
-//     top: 20%;
-//     left: 20%;
-//     transform: translate(-50%, -50%);
-//     background-color: white;
-//     padding: 20px;
-//     border-radius: 10px;
-//     box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
-//     text-align: center;
-//     color: black;
-// }
-// // #contenedor-pop-up{
-// //     width: min-content;
-// // }
-// // #agregar:hover{
-// //     cursor: pointer;
-// // }
-
-.agregar-btn{
+.agregar-btn {
     color: $color-4;
     font-weight: bold;
 
-        &:hover{
-            cursor: pointer;
-        }
+    &:hover {
+        cursor: pointer;
+    }
 }
-// .carrito-container{
-//     @include dflex(column, space-between, center, nowrap);
-//     justify-content: center;
-//     margin: 1rem;
-// }
-
-// .carrito-img{
-//     max-height: 90px;
-//     min-height: 50px;
-// }
-// // .carrito-hide{
-// //     display:none;
-// // }
-// .vaciar:hover{
-//     cursor: pointer;
-//     scale: 1.2;
-//     transition: 500ms;
-// }
-
-.tienda__bar{
+.tienda__bar {
     max-height: 100px;
     position: sticky;
     padding: 0.5rem;
@@ -205,44 +167,91 @@ section .cards {
     display: flex;
     background-color: $color-1;
     z-index: 1;
-    &--img{
-        height: 2rem;
-        justify-content: left;    
+
+    &--img {
+        height: 3rem;
+        justify-content: left;
+        &:hover{
+            cursor: pointer;
+        }
     }
-    &--text{
+
+    &--text {
         font-family: $font-2;
         font-weight: 900;
         justify-content: center;
         outline: 0.05rem;
     }
 }
-
-.close-modal:hover{
-    cursor: pointer;
+.modal{
+    width: 75%;
 }
 
-.modal-content{
+.close-modal:hover {
+    cursor: pointer;
+}
+.modal-content {
     background-color: $color-1;
     // box-shadow: 5px 5 px black;
 }
-.modal-body{
+
+.modal-body {
     background-color: #fff;
+    max-height: 20%
 }
 
-#tabla-carrito{
+#tabla-carrito {
     margin: auto;
-    & th{
+
+    & th {
         padding: 0.5rem;
+        font-size: 0.8rem;
     }
 }
-td{
+.total-compra{
+    font-size: 1.2rem;
+    font-weight: bolder;
+}
+
+td {
     text-align: center;
 }
 
 
-.modal-nombre{
+.modal-nombre {
     text-align: left;
 }
-.modal-footer{
+
+.modal-footer {
     justify-content: center;
 }
+
+#loader-productos {
+    margin: 2.5rem;
+    border: 16px solid #f3f3f3;
+    border-top: 16px solid $color-1;
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.mensaje-producto-agregado{
+    background-color: $color-3;
+    font-family: $font-2;
+    font-weight: bold;
+}
+
+// #imagen-carrito:hover{
+//     cursor: pointer;
+// }

@@ -1,0 +1,74 @@
+[
+    {
+        "codigo": 1,
+        "nombre": "Sahumerio de Palo Santo",
+        "precio": 250,
+        "imagen": "../img/cod1.jpg"
+    },
+    {
+        "codigo": 2,
+        "nombre": "Sahumerio de Incienso",
+        "precio": 250,
+        "imagen": "../img/cod2.jpg"
+    },
+    {
+        "codigo": 3,
+        "nombre": "Sahumerio de Ruda y Romero",
+        "precio": 250,
+        "imagen": "../img/cod3.jpg"
+    },
+    {
+        "codigo": 4,
+        "nombre": "Sahumerio de Copal",
+        "precio": 350,
+        "imagen": "../img/cod4.jpg"
+    },
+    {
+        "codigo": 5,
+        "nombre": "Sahumerio de Sándalo Olíbano",
+        "precio": 350,
+        "imagen": "../img/cod5.jpg"
+    },
+    {
+        "codigo": 6,
+        "nombre": "Sahumerio Botánico Té Verde y Champa",
+        "precio": 350,
+        "imagen": "../img/cod6.jpg"
+    },
+    {
+        "codigo": 7,
+        "nombre": "Bombas defumadoras Defum. Completa",
+        "precio": 800,
+        "imagen": "../img/cod7.jpg"
+    },
+    {
+        "codigo": 8,
+        "nombre": "Bombas defumadoras 7 Hierbas Copal",
+        "precio": 800,
+        "imagen": "../img/cod8.jpg"
+    },
+    {
+        "codigo": 9,
+        "nombre": "Bombas defumadoras 7 Elementos Puros",
+        "precio": 800,
+        "imagen": "../img/cod9.jpg"
+    },
+    {
+        "codigo": 10,
+        "nombre": "Óleo Esencial Oleum Revitalizante",
+        "precio": 1200,
+        "imagen": "../img/cod10.jpg"
+    },
+    {
+        "codigo": 11,
+        "nombre": "Óleo Esencial Oleum Afrodisíaco",
+        "precio": 1200,
+        "imagen": "../img/cod11.jpg"
+    },
+    {
+        "codigo": 12,
+        "nombre": "Óleo Esencial Oleum Concentración",
+        "precio": 1200,
+        "imagen": "../img/cod12.jpg"
+    }
+]

@@ -280,14 +280,21 @@ section .cards {
   z-index: 1;
 }
 .tienda__bar--img {
-  height: 2rem;
+  height: 3rem;
   justify-content: left;
+}
+.tienda__bar--img:hover {
+  cursor: pointer;
 }
 .tienda__bar--text {
   font-family: "Work Sans", sans-serif;
   font-weight: 900;
   justify-content: center;
   outline: 0.05rem;
+}
+
+.modal {
+  width: 75%;
 }
 
 .close-modal:hover {
@@ -300,6 +307,7 @@ section .cards {
 
 .modal-body {
   background-color: #fff;
+  max-height: 20%;
 }
 
 #tabla-carrito {
@@ -307,6 +315,12 @@ section .cards {
 }
 #tabla-carrito th {
   padding: 0.5rem;
+  font-size: 0.8rem;
+}
+
+.total-compra {
+  font-size: 1.2rem;
+  font-weight: bolder;
 }
 
 td {
@@ -319,6 +333,30 @@ td {
 
 .modal-footer {
   justify-content: center;
+}
+
+#loader-productos {
+  margin: 2.5rem;
+  border: 16px solid #f3f3f3;
+  border-top: 16px solid #74C69D;
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+.mensaje-producto-agregado {
+  background-color: #264653;
+  font-family: "Work Sans", sans-serif;
+  font-weight: bold;
 }
 
 .carousel {
