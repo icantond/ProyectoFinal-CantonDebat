@@ -1,44 +1,9 @@
-// const productos = [
-//     { codigo: 1, nombre: "Sahumerio de Palo Santo", precio: 250, imagen: "../img/cod1.jpg" },
-//     { codigo: 2, nombre: "Sahumerio de Incienso", precio: 250, imagen: "../img/cod2.jpg" },
-//     { codigo: 3, nombre: "Sahumerio de Ruda y Romero", precio: 250, imagen: "../img/cod3.jpg" },
-//     { codigo: 4, nombre: "Sahumerio de Copal", precio: 350, imagen: "../img/cod4.jpg" },
-//     { codigo: 5, nombre: "Sahumerio de Sándalo Olíbano", precio: 350, imagen: "../img/cod5.jpg" },
-//     { codigo: 6, nombre: "Sahumerio Botánico Té Verde y Champa", precio: 350, imagen: "../img/cod6.jpg" },
-//     { codigo: 7, nombre: "Bombas defumadoras Defum. Completa", precio: 800, imagen: "../img/cod7.jpg" },
-//     { codigo: 8, nombre: "Bombas defumadoras 7 Hierbas Copal", precio: 800, imagen: "../img/cod8.jpg" },
-//     { codigo: 9, nombre: "Bombas defumadoras 7 Elementos Puros", precio: 800, imagen: "../img/cod9.jpg" },
-//     { codigo: 10, nombre: "Óleo Esencial Oleum Revitalizante", precio: 1200, imagen: "../img/cod10.jpg" },
-//     { codigo: 11, nombre: "Óleo Esencial Oleum Afrodisíaco", precio: 1200, imagen: "../img/cod11.jpg" },
-//     { codigo: 12, nombre: "Óleo Esencial Oleum Concentración", precio: 1200, imagen: "../img/cod12.jpg" }
-// ];
-
-// // const productos = [];
-// fetch('/js/productos.json')
-//     .then(response => response.json())
-//     .then(data => {
-//         productos = data.productos;
-//     })
-//     .catch(error => {
-//         console.error('Error al cargar el archivo JSON: ', error);
-//     });
-
-// Uso de método fetch() para traer el array de productos desde el archivo JSON:
-// fetch("/js/productos.json")
-//     .then(response => response.json())
-//     .then(data => {
-//         productos = data;
-//     })
-//     .catch(error => {
-//         console.error("Error al cargar el archivo JSON", error);
-//     });
-
-
 async function cargarProductos() {
 
     let productos;
     try {
-        const response = await fetch("js/productos.json");
+        //     const response = await fetch("js/productos.json");/*ruta GitHub*/
+        const response = await fetch("/js/productos.json"); /*ruta live server*/
         const data = await response.json();
         productos = data;
     } catch (error) {
@@ -47,7 +12,7 @@ async function cargarProductos() {
     setTimeout(() => {
         renderizarTarjetas(productos);
         document.getElementById("loader-productos").style.display = "none";
-    }, 2000);/*Agrego un timeOUt() para que las tarjetas se rendericen a los 2 segundos
+    }, 2000);/*Agrego un timeOut() para que las tarjetas se rendericen a los 2 segundos
 sólo para que sea visible si la carga del JSON es rápida*/
 };
 
@@ -67,8 +32,13 @@ function renderizarTarjetas(productos) {
                 <div class="cards__element">
                 <div class="cards__element__img__container">
                     <img src=${producto.imagen}
-                    class="cards__element__image">
-                </div>
+                    class="cards__element__image" id="myImg">
+                    <div id="myModal" class="modal">
+                    <span class="close">&times;</span>
+                    <img class="modal-content" id="img01">
+                    <div id="caption"></div>
+                    </div>
+                    </div>
                 <h3 class="cards__element__name" id="nombre">${producto.nombre}</h3>
                 <h5 class="cards__element__price" id="precio">$ ${parseFloat(producto.precio).toFixed(2)}</h5>
                 <p class="cards__element__codigo" id="codigo">Cód.${producto.codigo}</p>
@@ -94,8 +64,8 @@ function renderizarTarjetas(productos) {
                 gravity: "bottom",
                 className: "mensaje-producto-agregado",
                 style: {
-                background: "#264653",
-                color: "#74C69D",
+                    background: "#264653",
+                    color: "#74C69D",
                 }
             }).showToast();
         });
@@ -123,7 +93,6 @@ const carrito = {
         if (productoExistente) {
             let index = this.productos.indexOf(productoExistente);
             this.productos[index].cantidad += cantidad;
-            // this.productos.splice(index, 0, { codigo, nombre, precio, cantidad });
         } else {
             this.productos.push({ codigo, nombre, precio, cantidad });
         }
@@ -189,8 +158,8 @@ modal.innerHTML = `
             <div id="total-compra"></div>
         </div>
         <div class="modal-footer">
-            <button id="vaciar-carrito">Vaciar carrito</button>
-            <button id="comprar">Comprar</button>
+            <div id="vaciar-carrito" class="cards__button">Vaciar carrito</div>
+            <a href="carrito.html"><div id="comprar" class="cards__button">Comprar</div></a>
         </div>
     </div>
 `;
@@ -250,10 +219,31 @@ function vaciarCarrito() {
     modal.style.display = "none";
 }
 // comprar estará disponible en entrega final
-function efectuarCompra() {
-    Swal.fire('Próximamente')
-}
+// function efectuarCompra() {
+//     Swal.fire('Próximamente')
+// }
 
 document.getElementById("vaciar-carrito").addEventListener("click", vaciarCarrito);
-document.getElementById("comprar").addEventListener("click", efectuarCompra);
+// document.getElementById("comprar").addEventListener("click", efectuarCompra);
 
+
+// // Get the modal
+// let imgModal = document.getElementById("myModal");
+
+// // Get the image and insert it inside the modal - use its "alt" text as a caption
+// let img = document.getElementById("myImg");
+// let modalImg = document.getElementById("img01");
+// let captionText = document.getElementById("caption");
+// img.onclick = function () {
+//     imgModal.style.display = "block";
+//     modalImg.src = this.src;
+//     captionText.innerHTML = this.alt;
+// }
+
+// // Get the <span> element that closes the modal
+// let span = document.getElementsByClassName("close")[0];
+
+// // When the user clicks on <span> (x), close the modal
+// span.onclick = function () {
+//     imgModal.style.display = "none";
+// } 
