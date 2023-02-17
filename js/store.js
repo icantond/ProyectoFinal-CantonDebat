@@ -2,7 +2,7 @@ async function cargarProductos() {
 
     let productos;
     try {
-        //     const response = await fetch("js/productos.json");/*ruta GitHub*/
+            // const response = await fetch("js/productos.json");/*ruta GitHub*/
         const response = await fetch("/js/productos.json"); /*ruta live server*/
         const data = await response.json();
         productos = data;
