@@ -242,7 +242,7 @@ section .cards {
 }
 .cards__button {
   background-color: #264653;
-  color: #FFF;
+  color: #fff;
   width: fit-content;
   margin: 1.2rem;
   padding: 4px 10px;
@@ -279,6 +279,14 @@ section .cards {
   display: flex;
   background-color: #74C69D;
   z-index: 1;
+}
+.tienda__bar--titulo {
+  font-family: "Alef", sans-serif;
+  margin-right: 3rem;
+  color: #fff;
+  text-shadow: 2px 1px 2px #264653;
+  font-size: 1.8rem;
+  font-weight: 600;
 }
 .tienda__bar--img {
   height: 3rem;
@@ -458,10 +466,17 @@ td {
 }
 .producto-carrito {
   color: black;
+  font-family: "Work Sans", sans-serif;
 }
-
 .producto-carrito-imagen {
   width: 100px;
+}
+.producto-carrito-nombre {
+  font-size: 1.2rem;
+}
+.producto-carrito-cantidad {
+  height: 50%;
+  width: fit-content;
 }
 
 #vaciar-carrito:hover {
@@ -470,6 +485,44 @@ td {
 
 #comprar:hover {
   cursor: pointer;
+}
+
+.container-carrito {
+  box-shadow: 2px 2px 3px #264653;
+  border-radius: 3%;
+  padding: 2rem;
+}
+
+.total-carrito {
+  margin: auto;
+  color: #264653;
+  padding: 1rem;
+  width: fit-content;
+}
+.total-carrito-texto {
+  text-align: center;
+  font-family: "Alef", sans-serif;
+  font-weight: bolder;
+  font-size: 1.9rem;
+  margin: auto;
+}
+
+.resumen-compra {
+  text-align: center;
+  font-family: "Work Sans", sans-serif;
+}
+
+.carrito-footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: nowrap;
+}
+
+.form-pago-text {
+  color: black;
+  text-align: center;
 }
 
 .carousel {

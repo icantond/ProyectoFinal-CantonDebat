@@ -215,7 +215,11 @@ function vaciarCarrito() {
     carrito.productos = [];
     cambiarImagenCarrito();
     carrito.guardarLocalStorage();
-    Swal.fire('Carrito vaciado con éxito!')
+    Swal.fire({
+        confirmButtonColor: "#74C69D",
+        title: "Carrito vaciado con éxito!"
+        })
+
     modal.style.display = "none";
 }
 // comprar estará disponible en entrega final

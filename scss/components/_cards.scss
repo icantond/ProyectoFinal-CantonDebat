@@ -128,7 +128,7 @@ section .cards {
 
     &__button {
         background-color: $color-3;
-        color: #FFF;
+        color: #fff;
         width: fit-content;
         margin: 1.2rem;
         padding: 4px 10px;
@@ -169,6 +169,15 @@ section .cards {
     display: flex;
     background-color: $color-1;
     z-index: 1;
+
+    &--titulo {
+        font-family: $font-1;
+        margin-right: 3rem;
+        color: #fff;
+        text-shadow: 2px 1px 2px $color-3;
+        font-size: 1.8rem;
+        font-weight: 600;
+    }
 
     &--img {
         height: 3rem;
@@ -359,17 +368,64 @@ td {
         width: 100%;
     }
 }
-.producto-carrito{
+
+.producto-carrito {
     color: black;
+    font-family: $font-2;
 
-}
-.producto-carrito-imagen{
-    width: 100px;
+    &-imagen {
+        width: 100px;
+    }
+
+    &-nombre {
+        font-size: 1.2rem;
+    }
+
+    &-cantidad {
+        height: 50%;
+        width: fit-content;
+    }
 }
 
-#vaciar-carrito:hover{
+#vaciar-carrito:hover {
     cursor: pointer;
 }
-#comprar:hover{
+
+#comprar:hover {
     cursor: pointer;
+}
+
+.container-carrito {
+    box-shadow: 2px 2px 3px $color-3;
+    border-radius: 3%;
+    padding: 2rem;
+}
+
+.total-carrito {
+    margin: auto;
+    // background-color: $color-3;
+    color: $color-3;
+    padding: 1rem;
+
+    width: fit-content;
+    &-texto {
+        text-align: center;
+        font-family: $font-1;
+        font-weight: bolder;
+        font-size: 1.9rem;
+        margin: auto;
+    }
+}
+.resumen-compra{
+    text-align: center;
+    font-family: $font-2;
+
+}
+.carrito-footer{
+    @include dflex(row, center, center, nowrap);
+}
+
+.form-pago-text{
+    color: black;
+    text-align: center;
 }
