@@ -163,15 +163,14 @@ modal.innerHTML = `
         </div>
     </div>
 `;
-
 // Agregar modal al documento
 document.body.appendChild(modal);
-
 
 // Abrir modal al hacer click en el icono del carrito
 let imagenCarrito = document.getElementById("imagen-carrito");
 imagenCarrito.addEventListener("click", function () {
     if (carrito.productos.length > 0) {
+        
         // Mostrar modal
         modal.style.display = "block";
 
@@ -219,35 +218,6 @@ function vaciarCarrito() {
         confirmButtonColor: "#74C69D",
         title: "Carrito vaciado con éxito!"
         })
-
     modal.style.display = "none";
 }
-// comprar estará disponible en entrega final
-// function efectuarCompra() {
-//     Swal.fire('Próximamente')
-// }
-
 document.getElementById("vaciar-carrito").addEventListener("click", vaciarCarrito);
-// document.getElementById("comprar").addEventListener("click", efectuarCompra);
-
-
-// // Get the modal
-// let imgModal = document.getElementById("myModal");
-
-// // Get the image and insert it inside the modal - use its "alt" text as a caption
-// let img = document.getElementById("myImg");
-// let modalImg = document.getElementById("img01");
-// let captionText = document.getElementById("caption");
-// img.onclick = function () {
-//     imgModal.style.display = "block";
-//     modalImg.src = this.src;
-//     captionText.innerHTML = this.alt;
-// }
-
-// // Get the <span> element that closes the modal
-// let span = document.getElementsByClassName("close")[0];
-
-// // When the user clicks on <span> (x), close the modal
-// span.onclick = function () {
-//     imgModal.style.display = "none";
-// } 

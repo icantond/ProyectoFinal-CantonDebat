@@ -90,42 +90,80 @@ document.body.appendChild(modalPago);
 
 // // Abrir modal al hacer click en el boton comprar
 let irAPagar = document.getElementById("pagar");
-    irAPagar.addEventListener("click", async function () {
+irAPagar.addEventListener("click", function () {
     modalPago.style.display = "block";
 
     let divFormPago = document.getElementById("div-form-pago");
 
     let verificarFormPago = document.querySelector("#form-pago");
-        if (!verificarFormPago) { /*Verifica que no exista un form en el modal, para evitar que se creen elementos form nuevamente cada vez que el usuario cierra
+    if (!verificarFormPago) { /*Verifica que no exista un form en el modal, para evitar que se creen elementos form nuevamente cada vez que el usuario cierra
         y vuelva a hacer click en el boton, si no existe, realiza la función*/
         let formPago = document.createElement("form");
         formPago.id = "form-pago";
+        formPago.class = "row";
         formPago.innerHTML = `
         <p class="form-pago-text">Para realizar el pago, necesitamos confirmar los siguientes datos:</p>
         <input type="text" name="nombre" class="input-pago form-control" placeholder="Nombre"></input>
         <input type="text" name="apellido" class="input-pago form-control" placeholder="Apellido"></input>
         <input type="email" name="email" class="input-pago form-control" placeholder="alguien@ejemplo.com"></input>
         <p class="form-pago-text">Datos de envío:</p>
-        <select id="select-provincia" class="select-pago form-control"></select>
-        <select id="select-localidad" class="select-pago form-control"></select>
-        <input type="text" id="input-calle" name="calle" class="input-pago form-control" placeholder="Ingresa la calle">
+        <select id="select-provincia" class="select-pago form-control"> 
+        </select>
+        <select id="select-localidad" class="select-pago form-control"> 
+        </select>
+        <input id="input-calle" type="text" name="calle" class="input-pago form-control" placeholder="Ingresá la calle">
+        </input>
+        <input id="input-altura" type="number" name="altura" class="input-pago form-control" placeholder="Ingresá la altura">
+        </input>
+        <input id="input-piso" type="number" name="piso" class="input-pago form-control input-inline" placeholder="Piso">
+        </input>
+        <input id="input-depto" type="number" name="depto" class="input-pago form-control input-inline" placeholder="Depto">
+        </input>
         `
         divFormPago.appendChild(formPago);
+
+        let selectProvincia = document.getElementById("select-provincia");
+        let selectLocalidad = document.getElementById("select-localidad");
+        let datalistCalle = document.getElementById("datalist-calle");
+
+        function provincias() {
+            fetch("https://apis.datos.gob.ar/georef/api/provincias")
+                .then(res => res.ok ? res.json() : Promise.reject(res))
+                .then(json => {
+                    let options = `<option value="Eleji tu provincia">Elejí tu provincia</option>`;
+                    json.provincias.forEach(el => options += `<option value="${el.nombre}">${el.nombre}</option>`);
+                    selectProvincia.innerHTML = options;
+                })
+                .catch(error => {
+                    let message = error.statusText || "Ocurrió un error al cargar las provicias";
+                    selectProvincia.nextElementSibling.innerHTML = `Error: ${error.status}: ${message}`;
+                })
+        }
+        provincias();
+
+        function localidad(provincias) {
+            fetch(`https://apis.datos.gob.ar/georef/api/localidades?provincia=${provincias}&max=1000`)
+                .then(res => res.ok ? res.json() : Promise.reject(res))
+                .then(json => {
+                    let options = `<option value="Elejí tu localidad">Elejí tu localidad</option>`;
+
+                    json.localidades.forEach(el => options += `<option value="${el.nombre}">${el.nombre}</option>`);
+
+                    selectLocalidad.innerHTML = options;
+                })
+                .catch(error => {
+                    let message = error.statusText || "Ocurrió un error al obtener las localidades";
+
+                    selectLocalidad.nextElementSibling.innerHTML = `Error: ${error.status}: ${message}`;
+                })
+                
+        }
+        
+        selectProvincia.addEventListener("change", e => {
+            localidad(e.target.value);
+        })
     }
 });
-
-let selectProvincia = document.getElementById("select-provincia");
-let selectLocalidad = document.getElementById("select-localidad");
-fetch("https://apis.datos.gob.ar/georef/api/provincias")
-    .then(response => response.json())
-    .then(data => {
-        data.provincias.forEach(provincia => {
-            let option = document.createElement("option");
-            option.value = provincia.id;
-            option.text = provincia.nombre;
-            selectProvincia.appendChild(option);
-        });
-    });
 
 
 let closeModal = document.querySelector(".close-modal");
