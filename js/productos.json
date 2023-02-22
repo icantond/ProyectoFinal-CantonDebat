@@ -20,25 +20,25 @@
     {
         "codigo": 4,
         "nombre": "Sahumerio de Copal",
-        "precio": 350,
+        "precio": 350.00,
         "imagen": "../img/cod4.jpg"
     },
     {
         "codigo": 5,
         "nombre": "Sahumerio de Sándalo Olíbano",
-        "precio": 350,
+        "precio": 350.00,
         "imagen": "../img/cod5.jpg"
     },
     {
         "codigo": 6,
         "nombre": "Sahumerio Botánico Té Verde y Champa",
-        "precio": 350,
+        "precio": 350.00,
         "imagen": "../img/cod6.jpg"
     },
     {
         "codigo": 7,
         "nombre": "Bombas defumadoras Defum. Completa",
-        "precio": 800,
+        "precio": 800.00,
         "imagen": "../img/cod7.jpg"
     },
     {

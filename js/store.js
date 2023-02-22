@@ -1,8 +1,9 @@
 async function cargarProductos() {
 
     let productos;
+
     try {
-            const response = await fetch("../js/productos.json");/*ruta GitHub*/
+        const response = await fetch("../js/productos.json");/*ruta GitHub*/
         // const response = await fetch("/js/productos.json"); /*ruta live server*/
         const data = await response.json();
         productos = data;
@@ -24,9 +25,11 @@ function renderizarTarjetas(productos) {
         let elemento = document.createElement("div");
         elemento.classList.add("col-6", "col-md-4", "col-lg-3", "col-xl-2");
         let unidades = '<select class="cantidad-producto">';
+
         for (let i = 1; i <= 20; i++) {
             unidades += `<option value="${i}">${i}</option>`;
         }
+
         unidades += '</select>';
         elemento.innerHTML = `
                 <div class="cards__element">
@@ -57,6 +60,7 @@ function renderizarTarjetas(productos) {
                 producto.precio,
                 parseInt(elemento.getElementsByClassName("cantidad-producto")[0].value)
             );
+
             Toastify({
                 text: "Agregado al Carrito",
                 duration: 3000,
@@ -78,6 +82,7 @@ cargarProductos();
 // Funcion para cambiar icono de carrito según esté lleno o vacío
 function cambiarImagenCarrito() {
     const imagenCarrito = document.getElementById("imagen-carrito");
+
     if (carrito.productos.length === 0) {
         imagenCarrito.src = "../img/bag.svg";
     } else {
@@ -96,27 +101,32 @@ const carrito = {
         } else {
             this.productos.push({ codigo, nombre, precio, cantidad });
         }
+
         cambiarImagenCarrito();
         this.guardarLocalStorage();
 
     },
+
     // Funcion para guardar el carrito y la imagen en LocalStorage
     guardarLocalStorage: function () {
         localStorage.setItem("carrito", JSON.stringify(this.productos));
         const imagenCarrito = document.getElementById("imagen-carrito");
         localStorage.setItem("imagenCarrito", imagenCarrito.src);
     },
+
     // Funcion para recuperar el carrito de LocalStorage
     recuperarLocalStorage: function () {
         if (localStorage.getItem("carrito")) {
             this.productos = JSON.parse(localStorage.getItem("carrito"));
         }
+
         if (localStorage.getItem("imagenCarrito")) {
             const imagenCarrito = document.getElementById("imagen-carrito");
             imagenCarrito.src = localStorage.getItem("imagenCarrito");
         }
     }
 };
+
 let botones = document.getElementsByClassName("agregar-btn");
 for (let boton of botones) {
     boton.addEventListener("click", function () {
@@ -128,7 +138,6 @@ for (let boton of botones) {
     });
 }
 
-// Recuperar el carrito al cargar la pagina
 carrito.recuperarLocalStorage();
 
 // Crear elemento modal
@@ -170,7 +179,7 @@ document.body.appendChild(modal);
 let imagenCarrito = document.getElementById("imagen-carrito");
 imagenCarrito.addEventListener("click", function () {
     if (carrito.productos.length > 0) {
-        
+
         // Mostrar modal
         modal.style.display = "block";
 
@@ -217,7 +226,7 @@ function vaciarCarrito() {
     Swal.fire({
         confirmButtonColor: "#74C69D",
         title: "Carrito vaciado con éxito!"
-        })
+    })
     modal.style.display = "none";
 }
 document.getElementById("vaciar-carrito").addEventListener("click", vaciarCarrito);

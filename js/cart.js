@@ -100,13 +100,13 @@ irAPagar.addEventListener("click", function () {
         y vuelva a hacer click en el boton, si no existe, realiza la función*/
         let formPago = document.createElement("form");
         formPago.id = "form-pago";
-        formPago.class = "row";
+        formPago.class = "containter";
         formPago.innerHTML = `
         <p class="form-pago-text">Para realizar el pago, necesitamos confirmar los siguientes datos:</p>
         <input type="text" name="nombre" class="input-pago form-control" placeholder="Nombre"></input>
         <input type="text" name="apellido" class="input-pago form-control" placeholder="Apellido"></input>
         <input type="email" name="email" class="input-pago form-control" placeholder="alguien@ejemplo.com"></input>
-        <p class="form-pago-text">Datos de envío:</p>
+        <p class="form-pago-text row">Datos de envío:</p>
         <select id="select-provincia" class="select-pago form-control"> 
         </select>
         <select id="select-localidad" class="select-pago form-control"> 
@@ -119,8 +119,45 @@ irAPagar.addEventListener("click", function () {
         </input>
         <input id="input-depto" type="number" name="depto" class="input-pago form-control input-inline" placeholder="Depto">
         </input>
+        <btn class="cards__button ir-a-pagar" id="ir-a-pagar">
+            Finalizar compra
+            <i class="bi bi-credit-card"></i>
+        </btn>
+        <a class="seguir-comprando" href="../pages/tienda.html"><btn class="cards__button finalizar-pago" id="finalizar-pago">
+        Seguir comprando
+        <i class="bi bi-credit-card"></i>
+    </btn></a>
         `
         divFormPago.appendChild(formPago);
+
+        
+    let botonIrAPagar = formPago.querySelector("#ir-a-pagar");
+    botonIrAPagar.addEventListener("click", function () {
+            Swal.fire({
+                title: 'Serás redirigido al sitio de Mercado Pago para realizar el pago',
+                text: "Pulsa aceptar para continuar",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#74C69D',
+                cancelButtonColor: '#FFC727',
+                confirmButtonText: 'Aceptar!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    Swal.fire({
+                        confirmButtonColor: '#74C69D',
+                        title: "Redirigiendo a Mercado Pago",
+                        text: "Gracias por tu compra!"
+                    }
+                    )
+                    // Redirigir a Mercado Pago
+                    function redireccion() {
+                        window.location.href = "https://www.mercadopago.com";
+                        localStorage.clear();
+                    }
+                    setTimeout(redireccion, 3000);
+                }
+            })
+    })
 
         let selectProvincia = document.getElementById("select-provincia");
         let selectLocalidad = document.getElementById("select-localidad");
@@ -210,4 +247,5 @@ function vaciarCarrito() {
 
 // Escuchar el evento click del elemento con ID "vaciar-carrito" y llamar a la función vaciarCarrito
 document.getElementById("vaciar-carrito").addEventListener("click", vaciarCarrito);
+
 

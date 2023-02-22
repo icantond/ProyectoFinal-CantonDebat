@@ -592,6 +592,14 @@ form-check-input:checked {
   color: #ffffff;
 }
 
+.input-pago, .select-pago {
+  margin-bottom: 0.5rem;
+}
+
+.ir-a-pagar:hover {
+  cursor: pointer;
+}
+
 .footer {
   background-color: #264653;
 }

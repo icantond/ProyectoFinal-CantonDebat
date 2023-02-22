@@ -4,19 +4,19 @@
     box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.516);
 }
 
-form{
+form {
     font-family: $font-2;
     color: $color-4;
 
-    &-label{
+    &-label {
         font-size: 1.1rem;
     }
 
-    &-check-label{
+    &-check-label {
         font-size: 0.9rem;
     }
 
-    &-check-input:checked{
+    &-check-input:checked {
         background-color: $color-1;
         outline: $color-1;
     }
@@ -39,11 +39,18 @@ form{
     border-radius: 3%;
     box-shadow: 2px 2px rgba(0, 0, 0, 0.326);
 
-        a{
-            color: $color-3;
-        }
-
-        :hover{
-            color: $color-4;
-        }
+    a {
+        color: $color-3;
     }
+
+    :hover {
+        color: $color-4;
+    }
+}
+.input-pago, .select-pago {
+    margin-bottom: 0.5rem;
+}
+
+.ir-a-pagar:hover{
+    cursor:pointer;
+}
