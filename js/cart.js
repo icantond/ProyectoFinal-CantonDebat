@@ -1,13 +1,16 @@
-/*Recuperar productos en carrito de localStorage*/
+//Recuperar productos en carrito de localStorage
 let productosGuardados = JSON.parse(localStorage.getItem("carrito")) || [];
 
-/*Renderizar productos en el carrito para mostrar un resumen de la compra*/
+//Renderizar productos en el carrito para mostrar un resumen de la compra
 function renderizarProductosGuardados() {
     let contenedor = document.getElementById("contenedor-productos-guardados");
+
     let total = 0;
+
     for (let producto of productosGuardados) {
         let subtotal = parseFloat(producto.precio) * producto.cantidad;
         total += subtotal;
+
         let elemento = document.createElement("div");
         elemento.classList.add("container");
         elemento.innerHTML = `
@@ -40,7 +43,8 @@ function renderizarProductosGuardados() {
             document.querySelector(".total-carrito-texto").innerHTML = `Total: $${nuevoTotal.toFixed(2)}`;
         });
     };
-
+    
+    // Generar el footer del modal
     let contenedorTotalElemento = document.createElement("div");
     contenedorTotalElemento.classList.add("total-carrito");
     contenedor.appendChild(contenedorTotalElemento);
@@ -50,6 +54,7 @@ function renderizarProductosGuardados() {
     contenedorTotalElemento.appendChild(totalElemento);
 }
 
+//Funcion para generar las opciones de los select de cantidad
 function generarOpcionesCantidad(cantidadSeleccionada) {
     let opciones = "";
     for (let i = 0; i <= 20; i++) {
@@ -63,7 +68,6 @@ function generarOpcionesCantidad(cantidadSeleccionada) {
 }
 
 renderizarProductosGuardados();
-
 
 // Crear elemento modal
 let modalPago = document.createElement("div");
@@ -125,12 +129,12 @@ irAPagar.addEventListener("click", function () {
         </btn>
         <a class="seguir-comprando" href="../pages/tienda.html"><btn class="cards__button finalizar-pago" id="finalizar-pago">
         Seguir comprando
-        <i class="bi bi-credit-card"></i>
+        <i class="bi bi-back"></i>
     </btn></a>
         `
         divFormPago.appendChild(formPago);
 
-        
+    
     let botonIrAPagar = formPago.querySelector("#ir-a-pagar");
     botonIrAPagar.addEventListener("click", function () {
             Swal.fire({
@@ -158,6 +162,9 @@ irAPagar.addEventListener("click", function () {
                 }
             })
     })
+
+    /*Se Crean las opciones de los select de provincia y localidad del formulario consumiento 
+    datos de la API oficial GeoRef*/
 
         let selectProvincia = document.getElementById("select-provincia");
         let selectLocalidad = document.getElementById("select-localidad");
@@ -202,7 +209,7 @@ irAPagar.addEventListener("click", function () {
     }
 });
 
-
+// Cierre del modal al hacer click en la X o fuera del mismo modal
 let closeModal = document.querySelector(".close-modal");
 
 closeModal.addEventListener("click", function () {
@@ -215,9 +222,11 @@ document.addEventListener("mousedown", function (event) {
     }
 });
 
+
 function vaciarCarrito() {
     // Eliminar los productos del local storage
     localStorage.removeItem("carrito");
+
     // Mostrar la alerta swal
     Swal.fire({
         title: 'Estás seguro que deseas vaciar el carrito?',
@@ -235,6 +244,7 @@ function vaciarCarrito() {
                 text: "Serás redirigido a la tienda"
             }
             )
+            
             // Redirigir al usuario a otra URL
             function redireccion() {
                 window.location.href = "./tienda.html";
@@ -245,7 +255,6 @@ function vaciarCarrito() {
     })
 }
 
-// Escuchar el evento click del elemento con ID "vaciar-carrito" y llamar a la función vaciarCarrito
 document.getElementById("vaciar-carrito").addEventListener("click", vaciarCarrito);
 
 

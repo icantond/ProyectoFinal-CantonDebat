@@ -4,7 +4,6 @@ async function cargarProductos() {
 
     try {
         const response = await fetch("../js/productos.json");/*ruta GitHub*/
-        // const response = await fetch("/js/productos.json"); /*ruta live server*/
         const data = await response.json();
         productos = data;
     } catch (error) {
@@ -14,7 +13,7 @@ async function cargarProductos() {
         renderizarTarjetas(productos);
         document.getElementById("loader-productos").style.display = "none";
     }, 2000);/*Agrego un timeOut() para que las tarjetas se rendericen a los 2 segundos
-sólo para que sea visible si la carga del JSON es rápida*/
+sólo para que sea visible el spinner si la carga del JSON es rápida*/
 };
 
 // Armado de tarjetas en el HTML - Creo una función para poder trabajar mejor el async await 
@@ -52,6 +51,8 @@ function renderizarTarjetas(productos) {
                 </btn>
                 </div>
     `;
+        
+        // Event listener que dispara un aviso de Toastify al hacer click en agregar
         let btnAgregar = elemento.getElementsByClassName("agregar-btn")[0];
         btnAgregar.addEventListener("click", function () {
             carrito.agregarProducto(
@@ -90,6 +91,7 @@ function cambiarImagenCarrito() {
     }
 };
 
+// Creo el objeto "carrito"
 const carrito = {
     productos: [],
     // Funcion para agregar productos al carrito
@@ -101,10 +103,9 @@ const carrito = {
         } else {
             this.productos.push({ codigo, nombre, precio, cantidad });
         }
-
         cambiarImagenCarrito();
         this.guardarLocalStorage();
-
+        this.eliminarProductosCantidadCero();
     },
 
     // Funcion para guardar el carrito y la imagen en LocalStorage
@@ -124,9 +125,13 @@ const carrito = {
             const imagenCarrito = document.getElementById("imagen-carrito");
             imagenCarrito.src = localStorage.getItem("imagenCarrito");
         }
+    },
+    // Función para eliminar productos con cantidad = 0
+    eliminarProductosCantidadCero: function() {
+        this.productos = this.productos.filter(producto => producto.cantidad > 0);
+        this.guardarLocalStorage();
     }
 };
-
 let botones = document.getElementsByClassName("agregar-btn");
 for (let boton of botones) {
     boton.addEventListener("click", function () {
@@ -230,3 +235,4 @@ function vaciarCarrito() {
     modal.style.display = "none";
 }
 document.getElementById("vaciar-carrito").addEventListener("click", vaciarCarrito);
+
