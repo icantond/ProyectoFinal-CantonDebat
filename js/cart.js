@@ -43,7 +43,7 @@ function renderizarProductosGuardados() {
             document.querySelector(".total-carrito-texto").innerHTML = `Total: $${nuevoTotal.toFixed(2)}`;
         });
     };
-    
+
     // Generar el footer del modal
     let contenedorTotalElemento = document.createElement("div");
     contenedorTotalElemento.classList.add("total-carrito");
@@ -134,9 +134,9 @@ irAPagar.addEventListener("click", function () {
         `
         divFormPago.appendChild(formPago);
 
-    
-    let botonIrAPagar = formPago.querySelector("#ir-a-pagar");
-    botonIrAPagar.addEventListener("click", function () {
+
+        let botonIrAPagar = formPago.querySelector("#ir-a-pagar");
+        botonIrAPagar.addEventListener("click", function () {
             Swal.fire({
                 title: 'Serás redirigido al sitio de Mercado Pago para realizar el pago',
                 text: "Pulsa aceptar para continuar",
@@ -161,10 +161,20 @@ irAPagar.addEventListener("click", function () {
                     setTimeout(redireccion, 3000);
                 }
             })
-    })
+        })
 
-    /*Se Crean las opciones de los select de provincia y localidad del formulario consumiento 
-    datos de la API oficial GeoRef*/
+
+        function compararPorNombre(a, b) {
+            if (a.nombre < b.nombre) {
+                return -1;
+            }
+            if (a.nombre > b.nombre) {
+                return 1;
+            }
+            return 0;
+        }
+        /*Se Crean las opciones de los select de provincia y localidad del formulario consumiento 
+        datos de la API oficial GeoRef*/
 
         let selectProvincia = document.getElementById("select-provincia");
         let selectLocalidad = document.getElementById("select-localidad");
@@ -174,6 +184,7 @@ irAPagar.addEventListener("click", function () {
             fetch("https://apis.datos.gob.ar/georef/api/provincias")
                 .then(res => res.ok ? res.json() : Promise.reject(res))
                 .then(json => {
+                    json.provincias.sort(compararPorNombre);
                     let options = `<option value="Eleji tu provincia">Elejí tu provincia</option>`;
                     json.provincias.forEach(el => options += `<option value="${el.nombre}">${el.nombre}</option>`);
                     selectProvincia.innerHTML = options;
@@ -189,6 +200,7 @@ irAPagar.addEventListener("click", function () {
             fetch(`https://apis.datos.gob.ar/georef/api/localidades?provincia=${provincias}&max=1000`)
                 .then(res => res.ok ? res.json() : Promise.reject(res))
                 .then(json => {
+                    json.localidades.sort(compararPorNombre);
                     let options = `<option value="Elejí tu localidad">Elejí tu localidad</option>`;
 
                     json.localidades.forEach(el => options += `<option value="${el.nombre}">${el.nombre}</option>`);
@@ -200,9 +212,9 @@ irAPagar.addEventListener("click", function () {
 
                     selectLocalidad.nextElementSibling.innerHTML = `Error: ${error.status}: ${message}`;
                 })
-                
+
         }
-        
+
         selectProvincia.addEventListener("change", e => {
             localidad(e.target.value);
         })
@@ -244,7 +256,7 @@ function vaciarCarrito() {
                 text: "Serás redirigido a la tienda"
             }
             )
-            
+
             // Redirigir al usuario a otra URL
             function redireccion() {
                 window.location.href = "./tienda.html";
